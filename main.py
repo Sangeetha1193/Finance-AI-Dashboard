@@ -229,8 +229,8 @@ def main():
     # LM Studio configuration info
     if st.sidebar.expander("🤖 LM Studio Info"):
         st.write("**Model Path:**")
-        st.code("C:\\Users\\sange\\.lmstudio\\models\\TheBloke\\Llama-2-7B-Chat-GGUF")
-        st.write("**Endpoint:** http://localhost:1234")
+        st.code("TheBloke\\Llama-2-7B-Chat-GGUF")
+        st.write("**Endpoint:** http://localhost:1")
         st.write("**Status:** " + ("✅ Connected" if st.session_state.lm_studio_status else "❌ Disconnected"))
     
     st.sidebar.markdown('</div>', unsafe_allow_html=True)
