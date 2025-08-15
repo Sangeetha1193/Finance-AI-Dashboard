@@ -2,7 +2,7 @@
 
 A sophisticated Streamlit dashboard that showcases a multi-agent AI system for real-time stock analysis using **your local Llama-2-7B-Chat-GGUF model** via LM Studio, yfinance, and advanced NLP techniques.
 
-## 🚀 Features
+##  Features
 
 - **Real-time Stock Data**: Live price feeds, historical charts, and financial metrics
 - **Local AI Analysis**: LLM-generated insights using your local Llama 2.7B model via LM Studio
@@ -13,11 +13,11 @@ A sophisticated Streamlit dashboard that showcases a multi-agent AI system for r
 - **Auto-Refresh**: Configurable live data updates
 - **Connection Monitoring**: Real-time LM Studio connection status
 
-## 🏗️ Architecture
+## 🏗 Architecture
 
 ### **Your Local Setup**
-- **Model Path**: `C:\Users\sange\.lmstudio\models\TheBloke\Llama-2-7B-Chat-GGUF`
-- **LM Studio API**: OpenAI-compatible endpoint on `http://localhost:1234`
+- **Model Path**: TheBloke\Llama-2-7B-Chat-GGUF`
+- **LM Studio API**: OpenAI-compatible endpoint on `http://localhost:1`
 - **No Docker Required**: Uses your existing LM Studio installation
 
 ### Front-End Components
@@ -49,13 +49,6 @@ A sophisticated Streamlit dashboard that showcases a multi-agent AI system for r
 mkdir financial-ai-dashboard
 cd financial-ai-dashboard
 
-# Copy these LM Studio-optimized files:
-# - main-lmstudio.py (rename to main.py)
-# - agents-lmstudio.py (rename to agents.py)
-# - data_fetcher.py  
-# - requirements-lmstudio.txt (rename to requirements.txt)
-# - env-lmstudio.txt (copy to .env)
-```
 
 ### Step 2: Set Up Python Environment
 
@@ -83,29 +76,29 @@ python -m textblob.download_corpora
 copy env-lmstudio.txt .env
 
 # The .env file should contain:
-LM_STUDIO_ENDPOINT=http://localhost:1234
+LM_STUDIO_ENDPOINT=http://localhost:1
 LLM_MODEL=TheBloke/Llama-2-7B-Chat-GGUF
 NEWS_API_KEY=your_news_api_key_here
 ```
 
 ### Step 4: Start LM Studio
 
-**🎯 Critical Step - Start Your LM Studio Server:**
+** Critical Step - Start Your LM Studio Server:**
 
 1. **Open LM Studio**
 2. **Load Your Model**: 
    - Navigate to your model: `TheBloke/Llama-2-7B-Chat-GGUF`
-   - Located at: `C:\Users\sange\.lmstudio\models\TheBloke\Llama-2-7B-Chat-GGUF`
+   - Located at: `TheBloke\Llama-2-7B-Chat-GGUF`
 3. **Enable API Server**:
    - Go to **Server** tab in LM Studio
    - Click **Start Server**
-   - Ensure it's running on **port 1234**
-   - You should see "Server running on http://localhost:1234"
+   - Ensure it's running on **port 1**
+   - You should see "Server running on http://localhost:1"
 
 4. **Verify API Connection**:
 ```bash
 # Test the API endpoint
-curl http://localhost:1234/v1/models
+curl http://localhost:1/v1/models
 # Should return JSON with your model information
 ```
 
@@ -115,7 +108,7 @@ curl http://localhost:1234/v1/models
 # Start the dashboard (make sure LM Studio server is running first!)
 streamlit run main.py
 
-# The app will open at http://localhost:8501
+# The app will open at http://localhost:85
 ```
 
 ## 🎯 Usage Guide
@@ -123,8 +116,8 @@ streamlit run main.py
 ### **LM Studio Integration Features**
 
 1. **Connection Status**: 
-   - Green indicator: LM Studio connected ✅
-   - Red indicator: LM Studio disconnected ❌
+   - Green indicator: LM Studio connected 
+   - Red indicator: LM Studio disconnected 
    - Real-time monitoring in sidebar
 
 2. **AI Analysis Tabs**:
@@ -164,41 +157,6 @@ Temperature: 0.7 (for balanced creativity/accuracy)
 - **Memory Usage**: Monitor RAM usage if running other applications
 - **Response Time**: Expect 2-5 seconds per AI analysis depending on hardware
 
-## 🐛 Troubleshooting
-
-### **Common Issues**
-
-1. **🔴 LM Studio Not Connected**:
-   ```bash
-   # Check if LM Studio server is running
-   curl http://localhost:1234/v1/models
-   
-   # Restart LM Studio server
-   # Go to LM Studio -> Server tab -> Stop/Start Server
-   ```
-
-2. **Model Loading Issues**:
-   - Verify model path: `C:\Users\sange\.lmstudio\models\TheBloke\Llama-2-7B-Chat-GGUF`
-   - Check available RAM (model needs ~4GB)
-   - Try reducing GPU layers if GPU memory is insufficient
-
-3. **Port Conflicts**:
-   ```bash
-   # If port 1234 is busy, change in LM Studio and update .env:
-   LM_STUDIO_ENDPOINT=http://localhost:1235
-   ```
-
-4. **Slow AI Responses**:
-   - Increase GPU layers in LM Studio
-   - Close unnecessary applications
-   - Consider reducing context length
-
-5. **Python Dependencies**:
-   ```bash
-   # If installation fails:
-   pip install --upgrade pip setuptools wheel
-   pip install -r requirements.txt --no-cache-dir
-   ```
 
 ### **Performance Optimization**
 
@@ -207,11 +165,11 @@ Temperature: 0.7 (for balanced creativity/accuracy)
 - **Settings**: Adjust LM Studio GPU layers based on available VRAM
 - **Monitoring**: Watch LM Studio's performance metrics
 
-## 📚 Technical Details
+##  Technical Details
 
 ### **LM Studio Integration**
 - **API Format**: OpenAI-compatible chat completions
-- **Connection**: HTTP requests to `localhost:1234`
+- **Connection**: HTTP requests to `localhost:1`
 - **Model**: Your local `Llama-2-7B-Chat-GGUF`
 - **Fallback**: Graceful degradation when LM Studio unavailable
 
@@ -228,7 +186,7 @@ Temperature: 0.7 (for balanced creativity/accuracy)
 - **AI**: TextBlob (always available) + LM Studio (when connected)
 - **Networking**: Direct HTTP calls to LM Studio API
 
-## 🚀 Advanced Usage
+##  Advanced Usage
 
 ### **Custom Prompts**
 
@@ -259,15 +217,14 @@ The dashboard includes:
 - **Response Times**: Visible loading indicators
 - **Error Handling**: Graceful fallback mechanisms
 
-## 📊 Example Screenshots
 
 When running successfully, you'll see:
-- 🟢 **Green Status**: "LM Studio: Connected" in sidebar
-- 🤖 **AI Analysis Sections**: Enhanced with "LM Studio Analysis" labels  
-- ⚡ **Fast Responses**: 2-5 second AI analysis responses
-- 📈 **Rich Insights**: Detailed stock, sentiment, and risk analysis
+-  **Green Status**: "LM Studio: Connected" in sidebar
+- **AI Analysis Sections**: Enhanced with "LM Studio Analysis" labels  
+-  **Fast Responses**: 2-5 second AI analysis responses
+-  **Rich Insights**: Detailed stock, sentiment, and risk analysis
 
-## 🎯 Next Steps
+##  Next Steps
 
 1. **Start LM Studio** with your model loaded
 2. **Run the dashboard**: `streamlit run main.py`
@@ -275,7 +232,7 @@ When running successfully, you'll see:
 4. **Verify AI features**: Check for green connection status
 5. **Enjoy AI-powered financial analysis!**
 
-## 🤝 Support
+## Support
 
 **LM Studio Issues**:
 - Ensure server is running on port 1234
@@ -288,5 +245,3 @@ When running successfully, you'll see:
 - Look for error messages in terminal
 
 ---
-
-**🎉 Enjoy your personalized AI-powered financial intelligence dashboard with your local Llama-2-7B-Chat model!**
